@@ -1,0 +1,23 @@
+{
+  "name": "webpackStudy",
+  "version": "1.0.0",
+  "description": "webpack_4.0_study",
+  "private": true,
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoseGithub/webpackStudy.git"
+  },
+  "keywords": [],
+  "author": "yoseZheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yoseGithub/webpackStudy/issues"
+  },
+  "homepage": "https://github.com/yoseGithub/webpackStudy#readme",
+  "devDependencies": {
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2"
+  }
+}
