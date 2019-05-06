@@ -4,7 +4,9 @@
   "description": "webpack_4.0_study",
   "private": true,
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "bundle": "webpack"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yoseGithub/webpackStudy.git"
