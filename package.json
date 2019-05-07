@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/yoseGithub/webpackStudy#readme",
   "devDependencies": {
+    "file-loader": "^3.0.1",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.2"
   }
