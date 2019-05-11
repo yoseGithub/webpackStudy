@@ -13,17 +13,16 @@ module.exports = {
     },
     module: {
         rules: [  //模块打包规则
-            // {
-            //     test: /\.(jpg|png|gif)$/,
-            //     use: {
-            //         loader: 'file-loader',
-            //         options: {
-            //             //placeholder 占位符
-            //             name: '[name]_[hash].[ext]',  //打包出来的图片名称是原图片名称跟后缀
-            //             outputPath: 'images/'  //打包到images文件夹下，如果没有会创建该文件夹
-            //         }
-            //     }
-            // },
+            {
+                test: /\.(woff|eot|ttf|svg)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name]_[hash].[ext]',  //打包出来的图片名称是原图片名称跟后缀
+                        outputPath: 'icon-font/'         //打包到css文件夹下，如果没有会创建该文件夹
+                    }
+                }
+            },
             {
                 test: /\.(jpg|png|gif)$/,
                 use: {
@@ -48,7 +47,18 @@ module.exports = {
             // cnpm i autoprefixer -D
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
+                use: [
+                    'style-loader',
+                    {
+                        // 查询参数 importLoaders，用于配置「css-loader 作用于 @import 的资源之前」有多少个 loader。
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 2,    // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+                            modules: true     // css模块化，这个时候全局的 import index.sass将会失效
+                        }
+                    },
+                    'sass-loader',
+                    'postcss-loader']
             }
         ]
     }
