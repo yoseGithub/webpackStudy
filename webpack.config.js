@@ -36,6 +36,19 @@ module.exports = {
                         limit: 2048  //是否小于2KB
                     }
                 }
+            },
+            // {
+            //     test: /\.css$/,
+            //     //css需要同时使用两个loader，css-loader负责简析css语法，style-loader负责把样式添加到head上
+            //     use: ['style-loader', 'css-loader']
+            // },
+            // 安装cnpm - npm install -g cnpm --registry=https://registry.npm.taobao.org
+            // 安装cnpm i sass-loader node-sass -D
+            // autoprefixer 自动给属性加前缀
+            // cnpm i autoprefixer -D
+            {
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
             }
         ]
     }
