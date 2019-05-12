@@ -5,13 +5,14 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 /* commonJS语法 */
 module.exports = {
     mode: "none",
-    // entry: {
-    //     main: './src/index.js'
-    // },
-    entry: './src/index.js',  //当入口文件只有一个的时候，可以这样简写，默认chunk是main
+    entry: {
+        main: './src/index.js',
+        sub: './src/index.js'
+    },
     output: {
-        filename: 'bundle.js',  //文件名
-        path: path.resolve(__dirname, 'dist')  //__dirname指的是webpack.config.js这个文件所在的路径
+        filename: '[name].js',  //文件名，多文件的时候不能把文件名写死，否则会报错，因为文件同名了，必须用占位符或者干脆不写
+        path: path.resolve(__dirname, 'dist'),  //__dirname指的是webpack.config.js这个文件所在的路径
+        publicPath: 'localhost:8080'     //给js添加cdn地址，这里没有所以用这个来看看
     },
     module: {
         rules: [  //模块打包规则
