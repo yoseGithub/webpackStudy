@@ -1,0 +1,3 @@
+#root>div:nth-of-type(even){
+    background-color: #a61db3;
+}

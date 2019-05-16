@@ -1,6 +1,7 @@
 const path = require('path');  //引入node 的 path 核心模块
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 /* commonJS语法 */
 module.exports = {
@@ -8,6 +9,16 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: {
         main: './src/index.js'
+    },
+    devServer: {
+          // --watch webpack监听打包文件
+        contentBase: './dist',
+        open: true,
+        proxy: {  // 接口代理
+            '/api': 'http://localhost:80'
+        },
+        hot: true,     //webpack-dev-server开启热更新
+        hotOnly: true  //html没生效，浏览器不刷新
     },
     output: {
         filename: '[name].js',
@@ -46,6 +57,13 @@ module.exports = {
                     },
                     'sass-loader',
                     'postcss-loader']
+            },{
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    "css-loader",
+                    'postcss-loader'
+                ]
             }
         ]
     },
@@ -53,6 +71,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.html'
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
