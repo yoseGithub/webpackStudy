@@ -1,5 +1,6 @@
 {
   "name": "webpackStudy",
+  "sideEffects": false,
   "version": "1.0.0",
   "description": "webpack_4.0_study",
   "private": true,

@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 /* commonJS语法 */
 module.exports = {
-    mode: "development",
+    mode: "development",  // production
     devtool: 'cheap-module-eval-source-map',
     entry: {
         main: './src/index.js'
@@ -29,28 +29,28 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,  // 如果代码是在node-modules，则排除
-                loader: "babel-loader",   //webpack与babel的桥梁，并不会进行解析
-                options: {
-                    // 业务代码
-                    presets: [['@babel/preset-env', {  // 解析es6语法
-                        useBuiltIns: 'usage',          // 或 "entry"
-                        corejs: 3,
-                        targets: {
-                            chrome: "30"
-                        } 
-                    }]]
-                    // 写类库的时候
-                    // npm install --save-dev @babel/plugin-transform-runtime  // 不会污染全局环境，会以闭包的形式去注入对应的内容
-                    // npm install --save @babel/runtime
-                    // npm install --save @babel/runtime-corejs2 //如果corejs改成2，这里需要安装corejs2
-                    // 'plugins': [["@babel/plugin-transform-runtime"],{
-                    //     "corejs": 2,
-                    //     "helps": true,
-                    //     "regenerator": true,
-                    //     "useESModules": false
-                    // }]
-                    // 当配置太多的时候，可以建立一个.babelrc文件，把babel中的options丢过去
-                }
+                loader: "babel-loader"   //webpack与babel的桥梁，并不会进行解析
+                // options: {
+                //     // 业务代码
+                //     presets: [['@babel/preset-env', {  // 解析es6语法
+                //         useBuiltIns: 'usage',          // 或 "entry"
+                //         corejs: 3,
+                //         targets: {
+                //             chrome: "30"
+                //         } 
+                //     }]]
+                //     // 写类库的时候
+                //     // npm install --save-dev @babel/plugin-transform-runtime  // 不会污染全局环境，会以闭包的形式去注入对应的内容
+                //     // npm install --save @babel/runtime
+                //     // npm install --save @babel/runtime-corejs2 //如果corejs改成2，这里需要安装corejs2
+                //     'plugins': [["@babel/plugin-transform-runtime"],{
+                //         "corejs": 2,
+                //         "helps": true,
+                //         "regenerator": true,
+                //         "useESModules": false
+                //     }]
+                //     // 当配置太多的时候，可以建立一个.babelrc文件，把babel中的options丢过去
+                // }
             },{
                 test: /\.(woff|eot|ttf|svg)$/,
                 use: {
@@ -98,5 +98,8 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    optimization: {
+        usedExports: true
+    }
 }
