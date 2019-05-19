@@ -19,6 +19,7 @@
   "homepage": "https://github.com/yoseGithub/webpackStudy#readme",
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^2.0.2",
@@ -36,5 +37,9 @@
     "webpack-dev-middleware": "^3.6.2",
     "webpack-dev-server": "^3.3.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@babel/runtime-corejs3": "^7.4.4",
+    "core-js": "^3.0.1"
+  }
 }
