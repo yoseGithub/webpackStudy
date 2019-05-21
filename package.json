@@ -5,6 +5,7 @@
   "description": "webpack_4.0_study",
   "private": true,
   "scripts": {
+    "dev-bulid": "webpack --config ./bulid/webpack.dev.js",
     "start": "webpack-dev-server",
     "dev": "webpack-dev-server --config ./bulid/webpack.dev.js",
     "bulid": "webpack --config ./bulid/webpack.prod.js"
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/yoseGithub/webpackStudy#readme",
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.4",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.6",
@@ -44,6 +46,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "@babel/runtime-corejs3": "^7.4.4",
-    "core-js": "^3.0.1"
+    "core-js": "^3.0.1",
+    "lodash": "^4.17.11"
   }
 }

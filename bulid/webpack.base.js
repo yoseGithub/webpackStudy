@@ -78,9 +78,16 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        splitChunks: {  // 代码分割
+            chunks: 'all',
+            cacheGroups: false,
+            default: false
+        }
+    },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index.html'
+            template: './index.html'  //猜测，这个是根据package.json目录？
         }),
         new CleanWebpackPlugin()
     ],
