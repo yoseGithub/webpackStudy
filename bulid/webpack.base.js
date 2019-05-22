@@ -79,10 +79,27 @@ module.exports = {
         ]
     },
     optimization: {
-        splitChunks: {  // 代码分割
-            chunks: 'all',
-            cacheGroups: false,
-            default: false
+        splitChunks: {
+            chunks: "all",  // "async"只对异步代码进行打包 "initial"同步
+            minSize: 30000,  // 大于30k，正确应该是30720才是30k，进行代码分割
+            minChunks: 1,  // 当模块被引入至少一次
+            maxAsyncRequests: 5,  // 只能同时加载5个代码块，大于5的时候，前5个会分割
+            maxInitialRequests: 3,  // 首页（入口文件）最多只能分割3个
+            automaticNameDelimiter: '~',  // 文件名，组和文件名直接的拼接符
+            name: true,  // 打包生成的文件名是否有效，如果true则走cacheGroups中的规则命名
+            cacheGroups: {  // 缓存组，不会直接打包文件，会把符合组条件的文件打包成一个模块
+                vendors: {  // 匹配组名，会给打包文件前面加vendors~入口名
+                    test: /[\\/]node_modules[\\/]/,  // 检测是否是在node_modules中
+                    priority: -10,  // 优先级，当某个模块同时满足多个组的时候，按照优先级进行分配打包
+                    // filename: 'vendors.js'  // 会让上面的 automaticNameDelimiter 失效
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true,  //如果一个模块已经被打包过，则不再打包
+                    // filename: 'common.js'
+                }
+            }
         }
     },
     plugins: [
