@@ -91,13 +91,13 @@ module.exports = {
                 vendors: {  // 匹配组名，会给打包文件前面加vendors~入口名
                     test: /[\\/]node_modules[\\/]/,  // 检测是否是在node_modules中
                     priority: -10,  // 优先级，当某个模块同时满足多个组的时候，按照优先级进行分配打包
-                    filename: 'vendors.js'  // 会让上面的 automaticNameDelimiter 失效
+                    // filename: 'vendors.js'  // 会让上面的 automaticNameDelimiter 失效
                 },
                 default: {
                     minChunks: 2,
                     priority: -20,
                     reuseExistingChunk: true,  //如果一个模块已经被打包过，则不再打包
-                    filename: 'common.js'
+                    // filename: 'common.js'
                 }
             }
         }
