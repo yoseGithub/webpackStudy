@@ -5,7 +5,7 @@
   "description": "webpack_4.0_study",
   "private": true,
   "scripts": {
-    "dev-bulid": "webpack --config ./bulid/webpack.dev.js",
+    "dev-bulid": "webpack --profile --json > stats.json --config ./bulid/webpack.dev.js",
     "start": "webpack-dev-server",
     "dev": "webpack-dev-server --config ./bulid/webpack.dev.js",
     "bulid": "webpack --config ./bulid/webpack.prod.js"
