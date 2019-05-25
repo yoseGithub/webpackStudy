@@ -7,7 +7,8 @@ module.exports = {
         main: './src/index.js'
     },
     output: {
-        filename: '[name].js',
+        filename: '[name].js',  // 入口文件命名
+        chunkFilename: '[name].chunk.js', // 入口文件引入的chunk文件命名
         path: path.resolve(__dirname, '../dist')
     },
     module: {
@@ -56,29 +57,11 @@ module.exports = {
                         limit: 2048  //是否小于2KB
                     }
                 }
-            },{
-                test: /\.scss$/,
-                use: [
-                    'style-loader',
-                    {
-                        loader: "css-loader",
-                        options: {
-                            importLoaders: 2
-                        }
-                    },
-                    'sass-loader',
-                    'postcss-loader']
-            },{
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    "css-loader",
-                    'postcss-loader'
-                ]
             }
         ]
     },
     optimization: {
+        usedExports: true,
         splitChunks: {
             chunks: "all",  // "async"只对异步代码进行打包 "initial"同步
             minSize: 30000,  // 大于30k，正确应该是30720才是30k，进行代码分割

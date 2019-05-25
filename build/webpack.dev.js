@@ -15,11 +15,36 @@ const devConfig = {
         hot: true,     //webpack-dev-server开启热更新
         hotOnly: true  //html没生效，浏览器不刷新
     },
+    module: {
+        rules: [{
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 2
+                        }
+                    },
+                    'sass-loader',
+                    'postcss-loader'
+                ]
+            },{
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    "css-loader",
+                    'postcss-loader'
+                ]
+            }
+        }]
+    }
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ],
     optimization: {
-        usedExports: true
+        
     }
 }
 
