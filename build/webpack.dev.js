@@ -16,7 +16,7 @@ const devConfig = {
         hotOnly: true  //html没生效，浏览器不刷新
     },
     module: {
-        rules: [{
+        rules: [
             {
                 test: /\.scss$/,
                 use: [
@@ -38,8 +38,8 @@ const devConfig = {
                     'postcss-loader'
                 ]
             }
-        }]
-    }
+        ]
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ],
