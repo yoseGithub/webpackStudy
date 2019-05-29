@@ -5,6 +5,10 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');  
 
 const prodConfig = {
     mode: "production",
+    output: {
+        filename: '[name]_[contenthash].js',     // 入口文件命名
+        chunkFilename: '[name]_[contenthash].js' // 入口文件引入的chunk文件命名
+    },
     devtool: 'cheap-module-source-map',
     module: {
         rules: [

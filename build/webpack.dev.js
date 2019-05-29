@@ -4,6 +4,10 @@ const commonConfig = require('./webpack.base.js');
 
 const devConfig = {
     mode: "development",  // production
+    output: {
+        filename: '[name].js',            // 入口文件命名
+        chunkFilename: '[name].chunk.js', // 入口文件引入的chunk文件命名
+    },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
           // --watch webpack监听打包文件

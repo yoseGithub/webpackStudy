@@ -6,11 +6,9 @@ module.exports = {
     entry: {
         main: './src/index.js'
     },
-    output: {
-        filename: '[name].js',  // 入口文件命名
-        chunkFilename: '[name].chunk.js', // 入口文件引入的chunk文件命名
-        path: path.resolve(__dirname, '../dist')
-    },
+    // output: {
+    //     path: path.resolve(__dirname, '../dist')
+    // },
     module: {
         rules: [  //模块打包规则
             {
@@ -60,8 +58,12 @@ module.exports = {
             }
         ]
     },
+    performance: false,  // 不提示性能警告
     optimization: {
         usedExports: true,
+        runtimeChunk: {
+            name: "chunkName"
+        },
         splitChunks: {
             chunks: "all",  // "async"只对异步代码进行打包 "initial"同步
             minSize: 30000,  // 大于30k，正确应该是30720才是30k，进行代码分割
@@ -74,6 +76,7 @@ module.exports = {
                 vendors: {  // 匹配组名，会给打包文件前面加vendors~入口名
                     test: /[\\/]node_modules[\\/]/,  // 检测是否是在node_modules中
                     priority: -10,  // 优先级，当某个模块同时满足多个组的时候，按照优先级进行分配打包
+                    name: "vendors"
                     // filename: 'vendors.js'  // 会让上面的 automaticNameDelimiter 失效
                 },
                 default: {

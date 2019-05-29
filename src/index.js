@@ -1,8 +1,8 @@
 // 同步
-// import _ from 'lodash';
+import _ from 'lodash';
 
-// console.log(_.join(['a', 'b', 'c'], '*'));
-// console.log(_.join(['a', 'd', 'z'], ','));
+console.log(_.join(['a', 'b', 'c'], '*'));
+console.log(_.join(['a', 'd', 'z'], ','));
 
 // 异步
 /* webpackChunkName:"loadash" */
