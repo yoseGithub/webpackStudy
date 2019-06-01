@@ -9,9 +9,11 @@
   "private": true,
   "scripts": {
     "dev-build": "webpack --profile --json > stats.json --config ./build/webpack.dev.js",
-    "start": "webpack-dev-server",
     "dev": "webpack-dev-server --config ./build/webpack.dev.js",
-    "build": "webpack --config ./build/webpack.prod.js"
+    "build": "webpack --config ./build/webpack.prod.js",
+
+    "commondev": "webpack-dev-server --env.dev --config ./commonbuild/webpack.base.js",
+    "commonprod": "webpack --env.prod --config ./commonbuild/webpack.base.js"
   },
   "repository": {
     "type": "git",

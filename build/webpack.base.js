@@ -138,7 +138,7 @@ module.exports = {
             template: './index.html'  //猜测，这个是根据package.json目录？
         }),
         new CleanWebpackPlugin(),
-        new webpack.ProvidePlugin({
+        new webpack.ProvidePlugin({  // 自动加载模块，全局垫片
             _: 'lodash'
         })
     ],
